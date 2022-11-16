@@ -1,0 +1,56 @@
+*{
+	margin:0;
+	padding:0;
+	font-family: 'Roboto', sans-serif;
+}
+
+.container{
+	width:100%;
+	height: 100vh;
+	background-image: linear-gradient(to right, #0D324D, #7F5A83);
+	color: azure;
+} 
+h2{
+	font-size: 30px;
+}
+
+.main-header{
+position: absolute;
+margin-left: 32%;
+margin-top: 13%;
+}
+
+.ml-container{
+	position:absolute;
+	margin-top: 18%;
+	margin-left:32%;	
+}
+
+p{
+	position:relative;
+	text-align: center;
+	font-size: 25px;
+}
+
+.btn-info{
+	background-color: rgb(51, 51, 121);
+	border: none;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin-left: 40%;
+}
+
+.yes{
+	text-align: center;
+	margin-top: 50%;
+	color:red;
+}
+
+.nyes {
+	text-align: center;
+	margin-top: 50%;
+	color: blue;
+}
