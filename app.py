@@ -6,6 +6,7 @@ from sklearn.naive_bayes import MultinomialNB
 import sklearn.externals
 import joblib
 import pickle
+from collections.abc import Mapping
 
 # load the model from disk
 filename = 'nlp_model.pkl'
