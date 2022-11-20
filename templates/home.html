@@ -6,22 +6,65 @@
 </head>
 <body>
 	<div class="container">
-		<h2 class="main-header">Spam Detector For Email Messages</h2>
+		<h2 class="main-header">Spam Detector For Messages</h2>
 	
 	<div class="ml-container">
 		
-		<form action="{{ url_for('predict')}}" method="POST">
-			<p>Enter Your Message Here</p>
-			<!-- <input type="text" name="comment"/> -->
-			<textarea name="message" rows="6" cols="65"></textarea>
-			<br/>
+		<form id = "myForm">
+			<p class = "innerPara">Enter Your Message Here</p>
+			<input class='query' type="text" name="message" value="">
+			<!-- <textarea name="message" rows="6" cols="65"></textarea> -->
 			
-			<input type="submit" class="btn-info" value="Predict">
+			<input type="submit" class="btnInfo" value="Predict" >
 			
 		</form>
 		
+	</div>
+
+	<div id = "finalResult">
+
 	</div>
 	
 </div>
 </body>
 </html>
+
+<script>
+	//function to fetch the json data by providing the url
+	async function giveResponse(url) {
+		let response = await fetch(url)
+		let value = await response.json()
+	//creating a new div element
+		var par = document.createElement('div');
+		par.classList.add('final-result');
+
+	//remove the previous result if exists
+		if (document.getElementById("finalResult").firstChild){
+			document.getElementById("finalResult").removeChild(document.getElementById("finalResult").firstChild)
+		}
+	
+	//add text according to the result from the model
+		if(value.prediction == 'Spam'){
+			console.log("This is a spam")
+			par.textContent = "Spam detected";
+		}
+		else{
+			console.log("This is not a spam");
+			par.textContent = "Not a spam";
+		}
+		document.getElementById("finalResult").appendChild(par);
+
+	};
+
+	//function to establish behavior of the form
+	document.getElementById("myForm").addEventListener("submit", function(e){
+		e.preventDefault();
+		let query = document.querySelector('.query');
+		var origin = window.location.origin;
+		origin += "/predict/";
+		let url = origin + query.value;
+		giveResponse(url)	 
+	});
+
+	
+</script>
